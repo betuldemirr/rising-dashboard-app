@@ -1,7 +1,9 @@
-"use client";
+import Login from "./login/page";
 
 export default function Home() {
   return (
-      <main>Rising Dashboard App</main>
+      <main>
+        <Login />
+      </main>
   );
 }
