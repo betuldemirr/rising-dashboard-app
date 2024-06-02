@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useRouter } from 'next/navigation';
 import { login, LoginResponse } from '../services/api';
@@ -15,12 +15,12 @@ const Login: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
 
-    const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setForm(prevState => ({ ...prevState, username: e.target.value }));
-    };
-
-    const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setForm(prevState => ({ ...prevState, password: e.target.value }));
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setForm(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
     };
 
     const onLoginFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +28,7 @@ const Login: React.FC = () => {
         setError(null);
         try {
             const data: LoginResponse = await login(form.username, form.password);
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('authToken', data.token);
             router.push('/dashboard');
             console.log(data);
         } catch (err) {
@@ -49,18 +49,20 @@ const Login: React.FC = () => {
                             <Form.Label>Username</Form.Label>
                             <Form.Control
                                 type="text"
+                                name="username"
                                 placeholder="Enter username"
                                 value={form.username}
-                                onChange={onUsernameChange}
+                                onChange={onInputChange}
                             />
                         </Form.Group>
                         <Form.Group controlId="password" className='mb-3'>
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
+                                name="password"
                                 placeholder="Enter password"
                                 value={form.password}
-                                onChange={onPasswordChange}
+                                onChange={onInputChange}
                                 required
                             />
                         </Form.Group>
