@@ -12,25 +12,25 @@ const DataInfo: React.FC<DataInfoProps> = ({ infoData }) => {
     return (
         <>
             <Row>
-                <Col>
+                <Col xs={6} lg={3} className='mb-2'>
                     <div className='data-info-box box-1'>
                         <span className='title'>Subscription expires on:</span>
                         <span className='info'>{infoData.expireTime}</span>
                     </div>
                 </Col>
-                <Col>
+                <Col xs={6} lg={3} className='mb-2'>
                     <div className='data-info-box box-2'>
                         <span className='title'>Last Charge:</span>
                         <span className='info'><span>{infoData.lastChargeAmount}</span> {infoData.lastCharge}</span>
                     </div>
                 </Col>
-                <Col>
+                <Col xs={6} lg={3} className='mb-2'>
                     <div className='data-info-box box-3'>
                         <span className='title'>Total Data Usage:</span>
                         <span className='info'>{formatDataUsage(infoData.totalDataUsage)}</span>
                     </div>
                 </Col>
-                <Col>
+                <Col xs={6} lg={3} className='mb-2'>
                     <div className='data-info-box box-4'>
                         <span className='title'>Daily Usage:</span>
                         <span className='info'>{formatDataUsage(infoData.dailyUsage)}</span>

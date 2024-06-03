@@ -34,7 +34,11 @@ export const login = async (username: string, password: string): Promise<LoginRe
     });
 
     if (!response.ok) {
-        throw new Error('Failed to login');
+        if(response.status === 403) {
+            throw new Error('Please check your credentials');
+        } else {
+            throw new Error('Something went wrong...');
+        }
     }
 
     const jsonResponse = await response.json();

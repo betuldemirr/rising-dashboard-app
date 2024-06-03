@@ -16,11 +16,11 @@ const Sidebar: React.FC = () => {
         <div className="sidebar">
             <Image src="/logo.svg" alt="Logo" className='mb-3' width={50} height={50} />
             <Nav className="flex-column gap-3">
-                <Nav.Link href="/home" className='mb-2'>
+                <Nav.Link href="/home">
                     <Image src="/home.svg" alt="Logo" width={50} height={50} />
                 </Nav.Link>
-                <Nav.Link href="/login" className='mb-3' onClick={onLogout}>
-                    <Image src="/logout.svg" alt="Logo" width={30} height={30} />
+                <Nav.Link href="/login" onClick={onLogout}>
+                    <Image src="/logout.svg" alt="Logo" width={50} height={50} />
                 </Nav.Link>
             </Nav>
         </div>

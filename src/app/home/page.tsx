@@ -20,8 +20,9 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid className='home-container'>
       <Sidebar />
+      <div>
       <Container className='my-5'>
         <Alert variant="info" dismissible onClose={onCloseAlert}>
           Special Offer! Get Complete Free Proxy 10 MB Proxy, without credit card. <span className='text-decoration-underline'>Start Free Trial</span>
@@ -30,6 +31,7 @@ const Home: React.FC = () => {
       </Container>
       <Navigation activeTab={activeTab} onTabChange={handleTabChange} />
       {activeTab === 'dashboard' ? <Dashboard /> : <MyProxies />}
+      </div>
     </Container>
   );
 }

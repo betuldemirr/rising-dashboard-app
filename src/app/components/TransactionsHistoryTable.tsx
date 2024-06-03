@@ -4,7 +4,7 @@ import { DataTableProps } from '../models/DataTableProps';
 
 const TransactionsHistoryTable: React.FC<DataTableProps> = ({ dataTable, onActionClick }) => {
     return (
-        <div className='component'>
+        <div className='component component-table'>
             <h3 className='mb-3'>Transactions History</h3>
             <Table hover >
                 <thead>

@@ -8,8 +8,14 @@ $lightGray: #e5ecf6;
 body {
   background-color: #F7FAFC !important;
 }
+.home-container {
+  display: flex;
+  @media (max-width: 992px) {
+    display: block;
+  }
+}
 .sidebar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100px;
@@ -20,6 +26,19 @@ body {
   text-align: center;
   padding-top: 20px;
   z-index: 999;
+  @media (max-width: 992px) {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .nav {
+      display: flex;
+      flex-direction: row !important;
+      justify-content: space-between;
+    }
+  }
 }
 .component {
   background-color: white;
@@ -27,9 +46,12 @@ body {
   border-radius: 16px;
   margin-top: 30px;
   margin-bottom: 30px;
-  table {
-    .table-title th {
-      border-style: none;
+  &.component-table {
+    overflow-y: scroll;
+    table {
+      .table-title th {
+        border-style: none;
+      }
     }
   }
   .dropdown {

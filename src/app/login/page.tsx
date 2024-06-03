@@ -30,8 +30,8 @@ const Login: React.FC = () => {
             if(response.status == 200){
                 router.push('/home');
             }
-        } catch (err) {
-            setError('Request cannot send. Error occurred');
+        } catch (err: any) {
+           setError(err.message)     
         }
     };
 
