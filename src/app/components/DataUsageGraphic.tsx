@@ -50,7 +50,11 @@ const ChartComponent: React.FC = () => {
     };
 
     return (
-        <Line data={chartData} options={chartOptions} />
+        <div className='component'>
+            <h2>Data usage per network</h2>
+            <Line data={chartData} options={chartOptions} />
+        </div>
     );
 };
+
 export default ChartComponent;

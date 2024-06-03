@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Alert, Table, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 import { getTable, getInfo } from '../services/api';
 import DataInfo from '../components/DataInfo';
-import DataTable from '../components/DataTable';
-import ChartComponent from '../components/Chart';
+import TransactionsHistoryTable from '../components/TransactionsHistoryTable';
+import ChartComponent from '../components/DataUsageGraphic';
 import { InfoData } from '../models/InfoData';
 import { TableData } from '../models/TableData';
 
@@ -45,21 +45,15 @@ const Dashboard: React.FC = () => {
         <Container className="mt-5">
             <Row>
                 <Col>
-                    {error && <Alert variant="danger">{error}</Alert>}
                     {loading ? (
                         <Alert variant="info">Loading...</Alert>
+                    ) : error ? (
+                        <Alert variant="danger">{error}</Alert>
                     ) : (
                         <>
-                            <h2>Info Data</h2>
                             {infoData && <DataInfo infoData={infoData} />}
-
-                            <h2>Data usage per network</h2>
                             <ChartComponent />
-
-                            <h2>Table Data</h2>
-                            {tableData.length > 0 && (
-                                <DataTable dataTable={tableData} onActionClick={onActionClick} />
-                            )}
+                            <TransactionsHistoryTable dataTable={tableData} onActionClick={onActionClick} />
                         </>
                     )}
                 </Col>

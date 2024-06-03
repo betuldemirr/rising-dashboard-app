@@ -28,7 +28,7 @@ const Login: React.FC = () => {
         try {
             const response: LoginResponse = await login(form.username, form.password);
             if(response.status == 200){
-                router.push('/dashboard');
+                router.push('/home');
             }
         } catch (err) {
             setError('Request cannot send. Error occurred');

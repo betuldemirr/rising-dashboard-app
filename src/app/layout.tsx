@@ -1,4 +1,7 @@
-import '../styles/globals.css';
+'use client'
+
+import React, { useState } from 'react';
+import '../styles/globals.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ReactNode } from 'react';
 
@@ -7,14 +10,15 @@ export default function RootLayout({
 }: {
   children: ReactNode;
 }) {
+
+ 
   return (
     <html lang="en">
       <body>
-        <header className="bg-primary text-white text-center py-3">
-          <h1>Rising Dashboard App</h1>
-        </header>
-        <div style={{ margin: '30px 40px' }}>
-          {children}
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: 1 }}>
+            {children}
+          </div>
         </div>
       </body>
     </html>
