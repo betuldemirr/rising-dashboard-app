@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useRouter } from 'next/navigation';
-import { login, LoginResponse } from '../services/api';
+import { login } from '../services/api';
+import { LoginForm } from '../models/LoginForm';
+import { LoginResponse } from '../models/LoginResponse';
+import { setAuthToken } from '../utils/Authutils';
 
-interface LoginForm {
-    username: string;
-    password: string;
-}
 
 const Login: React.FC = () => {
     const [form, setForm] = useState<LoginForm>({ username: '', password: '' });
@@ -27,12 +26,12 @@ const Login: React.FC = () => {
         e.preventDefault();
         setError(null);
         try {
-            const data: LoginResponse = await login(form.username, form.password);
-            localStorage.setItem('authToken', data.token);
-            router.push('/dashboard');
-            console.log(data);
+            const response: LoginResponse = await login(form.username, form.password);
+            if(response.status == 200){
+                router.push('/dashboard');
+            }
         } catch (err) {
-            setError('Failed to login. Please check your username and password.');
+            setError('Request cannot send. Error occurred');
         }
     };
 
