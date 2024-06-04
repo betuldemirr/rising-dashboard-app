@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   return (
     <Container fluid className='home-container'>
       <Sidebar />
-      <div>
+      <div className='w-100'>
       <Container className='my-5'>
         <Alert variant="info" dismissible onClose={onCloseAlert}>
           Special Offer! Get Complete Free Proxy 10 MB Proxy, without credit card. <span className='text-decoration-underline'>Start Free Trial</span>
