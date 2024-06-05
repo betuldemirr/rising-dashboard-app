@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   return (
     <Container fluid className='home-container'>
       <Sidebar />
-      
+
       <div className='w-100'>
       <Container className='my-5'>
         <Alert variant="info" dismissible onClose={onCloseAlert}>
@@ -33,6 +33,7 @@ const Home: React.FC = () => {
       <Navigation activeTab={activeTab} onTabChange={handleTabChange} />
       {activeTab === 'dashboard' ? <Dashboard /> : <MyProxies />}
       </div>
+      
     </Container>
   );
 }
